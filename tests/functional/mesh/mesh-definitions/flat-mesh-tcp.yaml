@@ -4,6 +4,14 @@ nodes:
     connections: {}
     nodedef:
       - tcp-listener: {}
+    tcrules:
+      # Only for inbound
+      delay: 40ms
+      #Jitter: 
+      #Loss: 
+      #Reordering: 
+      #Duplication: 
+      #Corrupt: 
   node1:
     connections:
       controller:

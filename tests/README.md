@@ -111,3 +111,15 @@ make vm-destroy
 # Reapply Ansible playbook into VM
 make vm-provision
 ```
+
+
+
+## WIP dependencies
+
+Install 
+
+sch_netem kernel module
+
+```bash
+dnf install iproute-tc kernel-debug-modules-extra kernel-modules-extra
+modprobe sch_netem

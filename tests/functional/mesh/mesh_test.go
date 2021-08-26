@@ -25,14 +25,14 @@ func TestMeshStartup(t *testing.T) {
 		filename string
 	}{
 		{"mesh-definitions/flat-mesh-tcp.yaml"},
-		{"mesh-definitions/random-mesh-tcp.yaml"},
-		{"mesh-definitions/tree-mesh-tcp.yaml"},
-		{"mesh-definitions/flat-mesh-udp.yaml"},
-		{"mesh-definitions/random-mesh-udp.yaml"},
-		{"mesh-definitions/tree-mesh-udp.yaml"},
-		{"mesh-definitions/flat-mesh-ws.yaml"},
-		{"mesh-definitions/random-mesh-ws.yaml"},
-		{"mesh-definitions/tree-mesh-ws.yaml"},
+		// {"mesh-definitions/random-mesh-tcp.yaml"},
+		// {"mesh-definitions/tree-mesh-tcp.yaml"},
+		// {"mesh-definitions/flat-mesh-udp.yaml"},
+		// {"mesh-definitions/random-mesh-udp.yaml"},
+		// {"mesh-definitions/tree-mesh-udp.yaml"},
+		// {"mesh-definitions/flat-mesh-ws.yaml"},
+		// {"mesh-definitions/random-mesh-ws.yaml"},
+		// {"mesh-definitions/tree-mesh-ws.yaml"},
 	}
 	t.Parallel()
 	for _, data := range testTable {
@@ -40,7 +40,13 @@ func TestMeshStartup(t *testing.T) {
 		t.Run(filename, func(t *testing.T) {
 			t.Parallel()
 			t.Logf("starting mesh")
-			m, err := mesh.NewCLIMeshFromFile(filename, t.Name())
+
+			// Run using CLI (no TC support)
+			// m, err := mesh.NewCLIMeshFromFile(filename, t.Name())
+
+			// Run using container (with TC support)
+			m, err := mesh.NewContainerMeshFromFile(filename, t.Name())
+
 			if err != nil {
 				t.Fatal(err)
 			}
